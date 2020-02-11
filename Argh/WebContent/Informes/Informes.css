@@ -1,0 +1,68 @@
+body{
+	background: url(../Imagenes/fondo.png);
+	background-repeat: no-repeat;
+	background-position: 10% 15%;
+	background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        padding-left: 5%;	
+}
+
+div{
+	text-align: left;
+	color: white;
+	background-color:rgba(207,37,0,0.8);
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 2%;
+	padding-right: 2%;
+	border-radius: 5px;
+	width:90%;
+	margin:10px;
+}
+
+table{
+	margin-top: 1%;
+	border-color: black;
+	border-collapse: collapse;
+	width:100%;
+}
+th,td{
+	padding-right: 10px;
+}
+
+table th{
+	text-align:left;
+	background-color: #008000;
+	color:white;
+	padding: 4px 30px 4px 8px;
+}
+
+table td{
+	border-bottom: 1px solid #e3e3e3;
+	padding: 4px 8px;
+	font:bold 15px "Trebuchet MS";
+	align: left;
+}
+table button {
+	button:pointer;
+}
+table .selected{
+	background-color:red;
+	color: white;
+}
+.commonRow{
+        background-color: transparent;
+      }
+
+.selectedRow{
+        background-color: blue;
+      }
+      
+
+.collapse{
+	background-color: #add8e6;
+	cursor:pointer;
+	color:black;
+}

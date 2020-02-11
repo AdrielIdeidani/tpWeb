@@ -1,0 +1,19 @@
+Bugs:
+1) El boton eliminar en Eventos solo funciona con el 1ro en la lista. Cuando se quiere usar con los otros
+toma bien el indice y todo pero no lo borra.
+2) Cuando se quiere agregar un nuevo evento lo agrega con la fecha del dia anterior al que se eligio
+(si eligo el 3 de febrero me tomara como que se indico para el 2 de febrero)
+3)El pedido 17 ya entregado esta mal. EL total es 409 (lo que esta en celeste esta mal). Se debe a que dsp de eso modifique el prod subiendole el precio. No actualice el total del pedido
+
+Para la db InfinityFree.net
+
+
+Mejoras:
+1) En mesas y mozos cuando selecciono alguno de los 2 agrandar esa tabla y mostrar los botones de modificar eliminar para cada fila
+2) Una mesa puede estar en los estados libre, reservada, ocupada, ocupada con reserva
+3) Apelicar tabindex para los elementos de cada pagina (pasar de uno a otro con el tab)
+
+
+Dudas:
+1)Lo que estoy usando para elegir la cantidad de cierto producto en pedidos (wan-spinner) funcionara en otra maquina? 
+En teoria ya lo agregue al proyecto

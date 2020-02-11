@@ -1,0 +1,166 @@
+*{
+	border: 0px;
+  	margin: 0px;
+  	color:white;
+  	text-shadow: 2px 2px 2px rgb(0,0,0);
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	margin:0px;
+	background-color: silver;
+	width: 100%; 
+}
+
+#abuelo{
+	width:98%;
+	height:600px;
+	-moz-transform: translate(0%,5%);
+	-o-transform: translate(0%,5%);
+  	-ms-transform: translate(0%,5%);
+  	-webkit-transform: translate(0%,5%);
+  	transform: translate(0%,5%);
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+	margin-left: 1%;
+	border-radius: 6px;
+}
+
+#padre{
+	width:100%;
+	height:600px;
+	background-color: #cf2500;
+	border-radius: 6px;
+
+	box-shadow:	inset 2px 2px 4px rgba(120, 120, 120, .4), 
+				inset 3px 3px 3px rgba(255,255,255,.4);
+	border-radius: 6px;
+	border: 1px solid black;
+	 
+
+}
+#Header{
+	background: transparent;
+	width:100%;
+	height: 40px;	
+}
+	#PanelTitulo{
+		font-size: 15px;
+		font-style: bold;
+		padding-left: 10px;
+		padding-top: 10px;
+		
+	}
+	#PanelUsuario{
+		font-size: 15px;
+		font-style: bold;
+		padding-right: 10px;
+		padding-top: 10px;
+	}
+
+#ContenedorPrincipal{
+	width: 100%;
+	min-height: 500px;
+	max-height: 500px;
+
+}
+	#contenedorBotones{	
+		background: transparent ;
+		width:19.9% ;
+		min-height: 500px;
+		max-height: 500px;
+		float: left;
+	}
+		#banderaLibano{
+			width: 95%;
+			height: auto;
+			margin-bottom: 5px;
+			margin-left: 2.5%;
+		}
+		.BTNPANELEvento{
+			background-color: transparent;
+			text-align:center;
+			width:95%;
+			margin-left: 2.5%;
+			height:40px;
+			transition-duration: 0.4s;
+			font-weight: bold;
+			text-shadow: 0px 0px 0px rgb(0,0,0);
+	
+		}
+		.BTNPANELEvento:hover{
+			background-color: silver;
+			color: #cf2500;
+			cursor: pointer;
+			text-shadow: 0px 0px 0px rgb(0,0,0);
+		}
+		.BTNPANEL{
+			background-color: transparent;
+			text-align:center;
+			width:95%;
+			margin-left: 2.5%;
+			height:40px;
+			transition-duration: 0.4s;
+			font-weight: bold;
+			text-shadow: 0px 0px 0px rgb(0,0,0);
+	
+		}
+		.BTNPANEL:hover{
+			background-color: silver;
+			color: #cf2500;
+			cursor: pointer;
+			text-shadow: 0px 0px 0px rgb(0,0,0);
+		}
+		.pedidos {
+			background-color: grey;
+			text-align: center;
+			width:95%;
+			margin-left: 2.5%;
+			height:20px;
+			transition-duration: 0.4s;
+			font-weight: bold;
+			text-shadow: 0px 0px 0px rgb(0,0,0);
+	
+		}
+		.pedidos:hover{
+			background-color: silver;
+			color: #cf2500;
+			cursor: pointer;
+			text-shadow: 0px 0px 0px rgb(0,0,0);
+		}
+		
+	#Pantalla{
+		width: 80%;
+		float: right;
+		min-height: 500px;
+		max-height: 500px;
+		margin:0px;
+	}
+	
+		#iframeprincipal{
+			position: relative;
+		    top:0;
+		    left: 0;
+		    width: 100%;
+		    min-height: 500px;
+			max-height: 500px;
+		    margin:0px;
+		    border: 0px;	
+		}
+
+#footer{
+	font-size: 15px;
+	color: silver;
+	font-style: bold;
+	width: 100%;
+	height: 50px;
+	background-color: transparent;
+	float: left;
+	text-align: center;
+	padding-top: 25px
+}
+
+
+	
+	
