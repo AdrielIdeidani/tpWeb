@@ -35,6 +35,7 @@
 			</tr>
 			</thead>
 			<% 
+			float totalVendido=0;
 			System.out.println("Llega a productos Informe");
 			ProductosData pd = new ProductosData(); 
 			ArrayList<Producto> list = pd.getAll(session.getAttribute("activado").toString()); //request.getAttribute("activado").toString()
@@ -46,13 +47,19 @@
 					<td><%= l.getStockIni()%></td>
 					<td><%= l.getVendidos()%></td>
 					 <td><%= l.getVendidos() * l.getPrecio() %> </td>
-					
+					<% totalVendido+= l.getVendidos() * l.getPrecio();%>
 				</tr>			
 			
 			
 			<%}%>
+<tr></tr>
+<tr>
+<td></td><td></td><td></td><td></td><td></td>
+<td>Total: $<%=totalVendido %></tr>
 
 </table>
+
+
 </div>
 </body>
 </html>

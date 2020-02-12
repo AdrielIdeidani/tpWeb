@@ -17,34 +17,35 @@
 				if (nombre!=null){
 			    String precio = request.getParameter("precio");
 			    String stockIni = request.getParameter("stockIni");
-
-
-		    	out.println("<label for='nombre'>  Nombre:  </label>");
-		    	out.println(" <input type='text'  name='nombre' value="+nombre+">" );
-		    	out.println("<label for='precio'>  Precio:  </label>");
-		    	out.println("<input type='number'   id='precio' name='precio' value="+precio+">");
-		    	out.println("<label for='stock'>  Stock:  </label>");
-		    	out.println("<input type='number' id='stock' name='stock' value="+ stockIni+" width='10'>");
-			    out.println("<input type='submit' value='Modificar'>");
-				out.println("<input type='hidden' name='auction' value='Modificar' >"); 
-				out.println("<input type='hidden' name='id' value="+ request.getParameter("id")+ ">"); 
-				out.println("<input type='hidden' name='idEventoActivo' value="+ request.getParameter("idEventoActivo")+ ">"); 
-				}
-	
-		  else {
-		    	
-			out.println("<label for='nombre'>  Nombre:  </label>");
-		    out.println(" <input type='text'  name='nombre' value=''>" );
-		    out.println("<label for='precio'>  Precio:  </label>");
-		    out.println("<input type='number'   id='precio' name='precio' value=''>");
-		    out.println("<label for='stock'>  Stock:  </label>");
-		    out.println("<input type='number' id='stock' name='stock' value='' width='10'>");
-			out.println("<input type='submit' value='Agregar'>");
-			out.println("<input type='hidden' name='auction' value='Insert' >"); 
-		    } 
-
-
 %>
+
+		    	<label for='nombre'>  Nombre:  </label>
+		    	<input type='text'  name='nombre' value=<%=nombre %>>
+		    	<label for='precio'>  Precio:  </label>
+		    	<input type='number'   id='precio' name='precio' value=<%= precio%>>
+		    	<label for='stock'>  Stock:  </label>
+		    	<input type='number' id='stock' name='stock' value=<%=stockIni %>>"
+			    <input type='submit' value='Modificar'>
+				<input type='hidden' name='auction' value='Modificar' >
+				<input type='hidden' name='id' value=<%=request.getParameter("id") %>> 
+				<input type='hidden' name='idEventoActivo' value=<%= request.getParameter("idEventoActivo")%>> 
+<%				}
+	
+		  else { %>
+		    	
+			<label for='nombre'>  Nombre:  </label>
+		   <input type='text'  name='nombre' value=''>
+		    <label for='precio'>  Precio:  </label>
+		    <input type='number'   id='precio' name='precio' value=''>
+		    <label for='stock'>  Stock:  </label>
+		    <input type='number' id='stock' name='stock' value='' width='10'>
+			<input type='submit' value='Agregar'>
+			<input type='hidden' name='auction' value='Insert' >
+		    
+		    <%} %>
+
+
+
 		    
 		   
 		</form>
@@ -53,6 +54,7 @@
 
 <script>
  $('#aux').val(${sessionScope.activado});
+ 
 /* 
    <input id="input"
      oninput="valid(this)"
@@ -67,7 +69,7 @@
                 el_down.innerHTML = "Typed Invalid Character."; 
             } 
  
- */
+ */ 
 
 </script>
 </body>

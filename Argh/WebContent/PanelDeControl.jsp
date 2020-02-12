@@ -89,7 +89,15 @@
 		var x = document.getElementById("opcionesPedidos");
 		  if (x.style.display === "none") {
 		    x.style.display = "block";
+		    document.querySelector('#btnPedidos').innerHTML = 'Pedidos -';
+			 document.querySelector('#btnPedidos').innerText = 'Pedidos -';
+			 document.querySelector('#btnPedidos').textContent = 'Pedidos -';
+			 
 		  } else {
+			  document.querySelector('#btnPedidos').innerHTML = 'Pedidos +';
+			  document.querySelector('#btnPedidos').innerText = 'Pedidos +';
+			  document.querySelector('#btnPedidos').textContent = 'Pedidos +';
+			 
 		    x.style.display = "none";
 		  }
 	/* 	  document.getElementById("btnPedidos").value = "Pedidos - ";
@@ -99,13 +107,18 @@
 	}
 $( document ).ready(function() {
 	
-	$(".BTNPANEL").attr("disabled", true);
-	$(".BTNPANEL").attr("disabled", false).css('opacity',0.5);
+	//$(".BTNPANEL").attr("disabled", true);
+	//$(".BTNPANEL").attr("disabled", false).css('opacity',0.5);
 
 	if ( ${sessionScope.activado }!== null){
 		$(".BTNPANEL").attr("disabled", false).css('opacity',1);
 
 		
+	}
+	else {
+		$(".BTNPANEL").attr("disabled", true);
+	
+	$(".BTNPANEL").attr("disabled", false).css('opacity',0.5);
 	}
 });
 	</script>
