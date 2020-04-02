@@ -15,7 +15,7 @@
 <link href="Css/PageInPanel.css" type="text/css" rel="stylesheet" />
 </head>
 <body>
-<div>
+
 		<h1 id="titulo">Productos para el Evento <% out.println(session.getAttribute("activado").toString()); %>:</h1>
 		<a href="ProductosInsert.jsp"><button class="btnAgregar">Añadir</button></a>
 		<form action="ProductosServlet" method="get">			
@@ -51,12 +51,11 @@
 			
 			
 		</form>
-	</div>
+	
 </body>
 <script type="text/javascript">
 
 // $("#titulo").text("Productos para el evento " + ${sessionScope.activado} + ": ");
-$(document).ready(function(){
 
 $(".btnClass").click(function() {
     var $row = $(this).closest("tr");    // Find the row
