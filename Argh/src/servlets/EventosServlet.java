@@ -75,33 +75,13 @@ public class EventosServlet extends HttpServlet {
 
 			
 		}
+		//Con este se redirige al de la pagina para modificarlo.
 		else if (request.getParameter("auction").contains("Modificar")) {
-			try {
-				 C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-						 user,contra);
-				
-				String query = "select fecha,descripcion from tparg.evento where idEvento=?;";
-				 pstmt = C.prepareStatement(query);
-				pstmt.setObject(1,request.getParameter("aux") );
-				 rs = pstmt.executeQuery();
-				 rs.next();
-				String nombre=rs.getString("Descripcion");
-				Date fecha =rs.getDate("Fecha");;
-
-				rs.close();
-				pstmt.close();
-				response.sendRedirect("EventosInsert.jsp?nombre="+nombre
-						+"&fecha="+ fecha +"&id="+ request.getParameter("aux")	);
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			finally{
-
-
-			}
+			Evento e = le.getEvento(user,contra, request.getParameter("aux"));
+		
 			
-			
+			response.sendRedirect("EventosInsert.jsp?nombre="+e.getDesc()
+					+"&fecha="+ e.getFecha() +"&id="+ request.getParameter("aux")	);
 			
 
 		}

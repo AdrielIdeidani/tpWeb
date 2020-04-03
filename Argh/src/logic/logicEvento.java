@@ -1,6 +1,7 @@
 package logic;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,6 +13,8 @@ import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 
 import javax.servlet.http.HttpSession;
+
+import entities.Evento;
 
 public class logicEvento {
 	Connection C=null;
@@ -112,6 +115,33 @@ public class logicEvento {
 	return resultado;	
 	}
 	
+	
+	public Evento getEvento(String user, String contra,String id) {
+		Evento ev= new Evento();
+		try {
+			 C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					 user,contra);
+			
+			String query = "select fecha,descripcion from tparg.evento where idEvento=?;";
+			 pstmt = C.prepareStatement(query);
+			pstmt.setObject(1,id );
+			 rs = pstmt.executeQuery();
+			 rs.next();
+			ev.setDesc(rs.getString("Descripcion"));
+			ev.setFecha(rs.getDate("Fecha"));
+
+			rs.close();
+			pstmt.close();
+			C.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	
+		return ev;
+		
+		
+	}
 	
 	
 }

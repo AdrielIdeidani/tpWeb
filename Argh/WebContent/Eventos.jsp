@@ -123,7 +123,7 @@ $(document).ready(function(){
 	           $("td").filter(function(index) {
 	            return $(this).html() == "0";
 	          }).parent().addClass("commonRow");
-	           sessionStorage.setItem("activado", "0"); //Si algo no anda en cuanto a seleccionar un evento borrar esto.
+	         // sessionStorage.setItem("activado", "0"); //Si algo no anda en cuanto a seleccionar un evento borrar esto.
 	           //Antes seleccionaba todos los eventos la 1ra vez que se cargaba la pagina
 	  		 $("td:contains(${sessionScope.activado})").parent().addClass("selectedRow");
 	 		

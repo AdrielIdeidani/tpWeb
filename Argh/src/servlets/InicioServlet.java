@@ -52,6 +52,7 @@ public class InicioServlet extends HttpServlet {
 		HttpSession miSesion = request.getSession(true);
 		miSesion.setAttribute("usuario", user);
 		miSesion.setAttribute("contra", contra);
+		miSesion.setAttribute("activado","0");
 		response.sendRedirect("PanelDeControl.jsp");
 		}
 		catch (SQLException e) {

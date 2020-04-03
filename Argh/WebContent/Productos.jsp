@@ -12,13 +12,21 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-<link href="Css/PageInPanel.css" type="text/css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper-utils.js" ></script>
+ 
+<link href="Css/PageInPanel.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 </head>
 <body>
-
+<div>
 		<h1 id="titulo">Productos para el Evento <% out.println(session.getAttribute("activado").toString()); %>:</h1>
 		<a href="ProductosInsert.jsp"><button class="btnAgregar">Añadir</button></a>
-		<form action="ProductosServlet" method="get">			
+		<form action="ProductosServlet" method="get" id="formProductos">			
 			<table id="mytable">
 			<thead>
 			<tr>
@@ -47,11 +55,11 @@
 			</table>
 			<input type="hidden" id="auction" name="auction" >
 			<input type="hidden" id="aux" name="aux" >
-			<input type="hidden" id="idEventoActivo" name="idEventoActivo" value=<% out.println(session.getAttribute("activado").toString()); %>>
-			
+<%-- 			<input type="hidden" id="idEventoActivo" name="idEventoActivo" value=<% out.println(session.getAttribute("activado").toString()); %>>
+ --%>		
 			
 		</form>
-	
+	</div>
 </body>
 <script type="text/javascript">
 
@@ -68,7 +76,7 @@ $(".btnClass").click(function() {
 });
 
 $(".btnEliminar").click(function() {
-
+		
 		var $row = $(this).closest("tr");    // Find the row
 	    var $text = $row.find(".colClass").text(); // Find the text
 	    $('#aux').val($row.find(".colClass").text());
@@ -78,15 +86,37 @@ $(".btnEliminar").click(function() {
 	    var $row = $(this).closest("tr");    // Find the row
 	    var $text = $row.find(".colClass").text(); // Find the text
 	    if(confirm("Eliminar Producto " + $text + "?")){
-		    $('#aux').val($row.find(".colClass").text());
+		   
 
 	    	return true;
 	    }
-	    else return false;
+	   
 	 	
 	});
+$(document).ready(function(){
 	
+	//var done = false;
+	
+	const queryString = window.location.search;
+
+	const urlParams = new URLSearchParams(queryString);
+
+	const page_type = urlParams.get('control');
+	
+	if(page_type!==null){
+		
+		
+	
+		bootbox.alert({
+		    size: "medium",
+		    title: "ERROR!",
+		    message: page_type,
+		    className: "bootboxError" //No Funciona
+		     
+		})
+	}
 })
+
 
 </script>
 </html>
