@@ -75,21 +75,38 @@ $(".btnClass").click(function() {
    // alert($row.find(".colClass").text());
 });
 
-$(".btnEliminar").click(function() {
-		
+$(".btnEliminar").click(function(e) {
+		e.preventDefault();
 		var $row = $(this).closest("tr");    // Find the row
 	    var $text = $row.find(".colClass").text(); // Find the text
 	    $('#aux').val($row.find(".colClass").text());
 	    $(this).attr('id')
 	    $('#auction').val($(this).attr('id'));
 		 
-	    var $row = $(this).closest("tr");    // Find the row
-	    var $text = $row.find(".colClass").text(); // Find the text
-	    if(confirm("Eliminar Producto " + $text + "?")){
-		   
-
-	    	return true;
-	    }
+	    bootbox.confirm({
+  			title: "Eliminar Producto",
+  		    message: "Eliminar Producto " + $text +"?" ,
+  		    buttons: {
+  		      
+  		        cancel: {
+  		            label: 'Cancelar',
+  		            className: 'btn-danger '
+  		        },
+  		        confirm: {
+  		            label: 'Eliminar',
+  		            className: 'btn-success '
+  		        }
+  		    },
+  		    callback: function (result) {
+  		    	
+  		    	if(result) {
+  		 	
+	 	  		document.getElementById("formProductos").submit();
+  		    	}
+  		    	
+  		    } 
+  		}); 
+	  
 	   
 	 	
 	});

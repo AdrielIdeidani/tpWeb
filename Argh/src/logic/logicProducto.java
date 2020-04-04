@@ -93,6 +93,20 @@ public class logicProducto {
 	
 	public String modificar (String user, String contra,String nombre,
 			String precio, String stock, String id,String idEvento) {
+		String completo=null;
+		if(Float.parseFloat(precio)<0) {
+			completo="No puede tener Precio negativo.";	
+		}
+		if(Integer.parseInt(stock)<0) {
+			completo="No puede tener Stock negativo.";
+		}
+		if(nombre.isEmpty()) {
+			completo="Asigne algun nombre al producto.";
+		}
+		if (completo==null) {
+			
+			
+		
 		try {
 			 C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					 user,contra);
@@ -117,7 +131,7 @@ public class logicProducto {
 			completo=e.getMessage();
 			e.printStackTrace();
 		}
-
+		}
 		return completo;
 
 	}
