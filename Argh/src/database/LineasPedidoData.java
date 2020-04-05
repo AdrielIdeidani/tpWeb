@@ -16,25 +16,31 @@ public class LineasPedidoData {
 	ResultSet rs=null;
 	PreparedStatement pstmt=null;
 	
-	public ArrayList<LineaPedido> getAll(String id) throws SQLException {
+	public ArrayList<LineaPedido> getAll(String user, String contra,String id) throws SQLException {
 	
 	//	System.out.println("Llega al Mesa Data! " + id);
 		ArrayList<LineaPedido> lineaList =null;
+
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
-//				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
-//						"epiz_24914012","LHo7Qpn2JaoM");
-			//	Connection c = new ConexionMySQL(); //ConexionMySQL
-				//System.out.println("getAll");
+					user,contra);
+			
+			System.out.println("Conecta LPD id: " + id);
+			System.out.println("Conecta LPD");
+			System.out.println("Conecta LPD");
+			System.out.println("Conecta LPD");
+
+
 				lineaList = new ArrayList<LineaPedido>();
 				String query = "SELECT * FROM tparg.pedido_producto where nroPedido = ? ; ";
+				System.out.println("llega antes de crear el pstmt");
 				PreparedStatement pstmt = C.prepareStatement(query);
 				pstmt.setString(1,id );
 				 rs = pstmt.executeQuery(); //Da error si pongo executeQuery(query). En otros datas se usa asi 
-			
+				 System.out.println("ejecuta el pstmt");
 				while(rs.next()) {
+					System.out.println("entra al while");
 						LineaPedido lp = new LineaPedido();
 						String query2 = "SELECT * FROM tparg.productos where idProductos = ? ; ";
 						PreparedStatement pstmt2 = C.prepareStatement(query2);
@@ -57,6 +63,7 @@ public class LineasPedidoData {
 			
 					
 		} catch (ClassNotFoundException e) {
+			System.out.println(e.getMessage());
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

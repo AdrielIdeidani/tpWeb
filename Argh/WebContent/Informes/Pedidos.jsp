@@ -56,7 +56,8 @@
 			
 			<%
 			LineasPedidoData lpd= new LineasPedidoData();
-			ArrayList<LineaPedido> listLinea = lpd.getAll(Integer.toString(l.getNroPedido()));
+			ArrayList<LineaPedido> listLinea = lpd.getAll(session.getAttribute("usuario").toString(),
+					session.getAttribute("contra").toString(),Integer.toString(l.getNroPedido()));
 			
 			for(LineaPedido l2: listLinea){%>
 			<tr class="comun">

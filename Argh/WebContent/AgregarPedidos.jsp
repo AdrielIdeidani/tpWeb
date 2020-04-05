@@ -15,15 +15,21 @@
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script> 
-  
-  
-<link href="Css/PageInPanel.css" type="text/css" rel="stylesheet" />
+  crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper-utils.js" ></script>
+ 
+<link href="Css/PageInPanel.css" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 </head>
 <body>
 	<div id="div1" class="form">
 <h2>Agregar Pedido para el evento: <% out.println(session.getAttribute("activado").toString()); %></h2>
-<form class="formInsert" action="PedidosServlet" method="post" >
+<form class="formInsert" action="PedidosServlet" id="formPedidos" method="post" >
 	
 	  <%
 		     	String nombre = request.getParameter("nombre");
@@ -33,8 +39,9 @@
 
 
 		    	%>
-		    	<label for='mesa'>  Mesa:  </label>
-		    	<select name="mesa" id="mesa">
+<!-- 		    	<label for='mesa'>  Mesa:  </label>
+ -->		    	<select name="mesa" id="mesa">
+		    	<option value='0'>Mesa</option>
 		    	<% 			
 				MesasData md = new MesasData(); 
 				ArrayList<Mesas> list = md.getAll(session.getAttribute("activado").toString());
@@ -45,6 +52,7 @@
 		    	
 		    	
 		    	<%}%>
+		    	
 		    	</select>
 		    	
 		    	
@@ -52,9 +60,9 @@
 		    	
 	  			
 	  			
-	  			<label for='mozo'>  Mozo:  </label>
-		    	<select name="mozo" id="mozo">	
-		    	
+<!-- 	  			<label for='mozo'>  Mozo:  </label>
+ -->		    	<select name="mozo" id="mozo">	
+		    	<option value='0'>Mozo</option>
 		    	<% 			
 				MozosData mod = new MozosData(); 
 				ArrayList<Mozo> list2 = mod.getAll(session.getAttribute("activado").toString());
@@ -65,8 +73,8 @@
 		    	</select>
 			
 <table id="tablaProductos" style="width=70%">
-<caption style="font-size:25px;text-decoration: underline; margin: 0 0 6px">Productos</caption>
-		
+<!-- <caption style="font-size:25px;text-decoration: underline; margin: 0 0 6px">Productos</caption>
+ -->		
 			<thead style="width=70%">
 			<tr>
 				<th>id</th>
@@ -94,9 +102,9 @@
 </table>
 <br >
 <label >Total : $</label> <!-- style="float:right" -->
-<label id="total" for="total" >0</label>
+<label id="total" for="total"  >0</label>
 <br>
-<input type="submit" value="Agregar" onclick="arrays()">
+<input type="submit" value="Agregar" id="btnAgregar" ><!-- onclick="arrays()" --> 
 <input type="hidden" id="tot" name="tot">
 <input type="hidden" id="idsHidden" name="idsHidden">
 <input type="hidden" id="cantidadesHidden" name="cantidadesHidden">
@@ -107,7 +115,32 @@
 </div>
 
 <script>
+$("#btnAgregar").click(function(e) {
+	
+		e.preventDefault();
+		
+		arrays();
+})
+
 function arrays(){
+	
+	var mozoCombo= document.getElementById("mozo");
+	var mozoSelected= mozoCombo.options[mozoCombo.selectedIndex].text;
+	
+	var mesaCombo =document.getElementById("mesa");
+	var mesaSelected= mesaCombo.options[mesaCombo.selectedIndex].text;
+	
+	if(mesaSelected == 'Mesa'){
+		bootbox.alert("Elija una mesa!");
+	}
+	else if(mozoSelected=='Mozo'){
+		bootbox.alert("Asigne un mozo!");
+	}
+	else {
+		
+	
+	
+	
  	var cantidades= new Array();
 	var ids = new Array(); 
 	var aux=0;
@@ -122,17 +155,35 @@ $("tr.iterate").each(function() {
 });
 $("#idsHidden").val(ids);
 $("#cantidadesHidden").val(cantidades);
+bootbox.confirm({
+		
+	    message: "Agregar Pedido?" ,
+	    buttons: {
+	      
+	        cancel: {
+	            label: 'Cancelar',
+	            className: 'btn-danger '
+	        },
+	        confirm: {
+	            label: 'Agregar',
+	            className: 'btn-success '
+	        }
+	    },
+	    callback: function (result) {
+	    	
+	    	if(result) {
+	 	
+	  		document.getElementById("formPedidos").submit();
+	  	    
+
+	    	}
+	    } 
+	}); 
+
 
 	}
-/* $("tr.iterate").each(function() {
-		
-        var quantity1 = $(this).find(".cantidad input").val(),
-            quantity2 = $(this).find(".precio").text();
-} */
-/* 	 var form = $('<form action="PedidosServlet" method="post">' +
-            '<input type="hidden" name="cantidades" value="'+cantidades+'">' +
-    '</form>');
-	 */
+}
+
 
 function actualizar(){
 	var total=0;
