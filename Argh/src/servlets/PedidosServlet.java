@@ -83,11 +83,11 @@ public class PedidosServlet extends HttpServlet {
 	
 		
 				if(aux==null) {
-					response.sendRedirect("PedidosPorEntregar.jsp");
+					response.sendRedirect("AgregarPedidos.jsp");
 
 				}
 				else
-				response.sendRedirect("PedidosPorEntregar.jsp?control="+aux);
+				response.sendRedirect("AgregarPedidos.jsp?control="+aux);
 			
 		
 		

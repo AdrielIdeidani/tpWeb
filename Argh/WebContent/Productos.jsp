@@ -24,10 +24,11 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 </head>
 <body>
 <div>
-		<h1 id="titulo">Productos para el Evento <% out.println(session.getAttribute("activado").toString()); %>:</h1>
+		
 		<a href="ProductosInsert.jsp"><button class="btnAgregar">Añadir</button></a>
 		<form action="ProductosServlet" method="get" id="formProductos">			
 			<table id="mytable">
+			<caption class="captionComun">Productos</caption>
 			<thead>
 			<tr>
 			

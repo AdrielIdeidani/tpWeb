@@ -40,11 +40,12 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 </head>
 <body>
 	<div>
-		<h1>Eventos:</h1>
+		
 		
 		<a href="EventosInsert.jsp"><button class="btnAgregar" id="btnInsertar">Añadir</button></a>
 		<form action="EventosServlet" id="formEventos" method="get">			
 			<table id="mytable">
+			<caption class="captionComun">Eventos</caption>
 			<thead>
 			<tr>
 			

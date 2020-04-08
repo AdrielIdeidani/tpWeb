@@ -25,14 +25,17 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 </head>
 <body>
-<div class="container">
-<h2> Evento = <%out.println(session.getAttribute("activado").toString());%></h2>
+
+
+<!-- <div class="container" > 
+ -->
+<%--  <h2> Evento = <%out.println(session.getAttribute("activado").toString());%></h2> --%>
 <div class="floatLeft">
 <form action="MesasYMozosServlet" method="post" id="formMesas">
 <input type="hidden" id="tabla" value="Mesas">
 
 <table>
-<!-- <caption>Mesas</caption> -->
+<caption class="captionComun">Mesas</caption>
 		
 			<thead>
 			<tr>
@@ -77,8 +80,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <form action="MesasYMozosServlet" method="post" id="formMozos">
 <input type="hidden" id="tabla" value="Mozos">
 <table>
-<!-- <caption>Mozos</caption>
- -->		
+<caption class="captionComun">Mozos</caption>	
 			<thead>
 			<tr>
 				<th>Id</th>
@@ -111,7 +113,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 </div>
 <input type="hidden" name="aux" id="aux">
 <input type="hidden" name ="auction" id="auction">
-</div>
+<!-- </div>  Div Container-->
 </body>
 <script type="text/javascript">
 $(document).ready(function(){

@@ -27,8 +27,47 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.4.0/bootbox.min.js"></script>
 </head>
 <body>
+
 	<div id="div1" class="form">
-<h2>Agregar Pedido para el evento: <% out.println(session.getAttribute("activado").toString()); %></h2>
+	<h2 style="color:black; text-align:center; fonto-size:17px;"> Nuevo Pedido</h2>
+	<!-- <div class="container" > -->
+ 
+
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog2">
+      <div class="modal-content2">
+
+        <div class="modal-header2">
+          <h4 class="modal-title2">Agregar Pedido</h4>
+          <!-- <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body2" >
+         
+         <label id="prodModal" for="prodModal" style=" position:absolute ; top: 10px; left: 10px" >-</label> <!-- " -->
+ 
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer2">
+       
+         <label id="totalModal" for="totalModal" style="top:5px; left:5px; position:relative text-align: left " >0</label>
+      	 <button type="button" class="btn btn-primary" data-dismiss="modal">Agregar y Entregar</button>
+      	  <button type="button" class="btn btn-success" data-dismiss="modal">Agregar</button>
+      	 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        </div>
+        
+      </div>
+    </div>
+<!--   </div> -->
+  
+</div>
+	
+	
+	
+<%-- <h2>Agregar Pedido para el evento: <% out.println(session.getAttribute("activado").toString()); %></h2> --%>
 <form class="formInsert" action="PedidosServlet" id="formPedidos" method="post" >
 	
 	  <%
@@ -90,7 +129,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 			for(Producto l: list3){%>
 				<tr class="iterate">
 					<td class="colClass"><%= Integer.toString(l.getId())%></td>
-					<td><%=l.getNombre()%></td>
+					<td class="colNombre"><%=l.getNombre()%></td>
 					<td class="precio"><%= l.getPrecio()%></td>
 					<td class="cantidad"> <input type="number" oninput="actualizar()" name="cantidad" value="0" min="0" max=<%= l.getStockIni() - l.getVendidos()%> title= <%= l.getStockIni() - l.getVendidos()%>></td>
 				</tr>			
@@ -104,7 +143,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <label >Total : $</label> <!-- style="float:right" -->
 <label id="total" for="total"  >0</label>
 <br>
-<input type="submit" value="Agregar" id="btnAgregar" ><!-- onclick="arrays()" --> 
+<input type="submit" value="Agregar" class="btnAgregar" id="btnAgregar" data-toggle="modal" data-target="#myModal"><!-- onclick="arrays()" --> 
 <input type="hidden" id="tot" name="tot">
 <input type="hidden" id="idsHidden" name="idsHidden">
 <input type="hidden" id="cantidadesHidden" name="cantidadesHidden">
@@ -118,7 +157,6 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 $("#btnAgregar").click(function(e) {
 	
 		e.preventDefault();
-		
 		arrays();
 })
 
@@ -136,6 +174,7 @@ function arrays(){
 	else if(mozoSelected=='Mozo'){
 		bootbox.alert("Asigne un mozo!");
 	}
+	
 	else {
 		
 	
@@ -144,20 +183,47 @@ function arrays(){
  	var cantidades= new Array();
 	var ids = new Array(); 
 	var aux=0;
+	var conProductos=0;
+	var prodM="Productos: \n";
 $("tr.iterate").each(function() {
-		
-     cantidades[aux]    = $(this).find(".cantidad input").val()
+		var cant =$(this).find(".cantidad input").val();
+   /*   cantidades[aux]    = $(this).find(".cantidad input").val()
       ids[aux]   = $(this).find(".colClass").text();
-      aux++;
-   
+      aux++; */
+			  cantidades[aux]    = cant;
+		      ids[aux]   = $(this).find(".colClass").text();
+		      aux++;
+		      if (cant>0){
+		    	var prodCant= $(this).find(".cantidad input").val();
+		    	prodCant= prodCant.concat(" ");
+		    	prodCant= prodCant.concat($(this).find(".colNombre").text());
+		    	prodM=  prodM.concat(prodCant);
+		    	prodM= prodM.concat("\n");
+				conProductos=1;
+	
+}
+		    
 
       	
 });
 $("#idsHidden").val(ids);
 $("#cantidadesHidden").val(cantidades);
+$("#prodModal").empty();
+/* alert(prodM);
+ */
+ document.getElementById("prodModal").value= prodM;
+$("#prodModal").append(prodM);
+	
+if(conProductos>0){
+	
+	
+
+
 bootbox.confirm({
-		
-	    message: "Agregar Pedido?" ,
+		title: "Agregar Pedido",
+	    message: txtM,
+	   
+	    
 	    buttons: {
 	      
 	        cancel: {
@@ -168,6 +234,7 @@ bootbox.confirm({
 	            label: 'Agregar',
 	            className: 'btn-success '
 	        }
+	      
 	    },
 	    callback: function (result) {
 	    	
@@ -180,7 +247,8 @@ bootbox.confirm({
 	    } 
 	}); 
 
-
+}
+else bootbox.alert("Agregue algun Producto!");
 	}
 }
 
@@ -201,6 +269,10 @@ function actualizar(){
 	 $("#total").empty();
 	$("#total").append(total);
 	$("#tot").val(total);
+	total= "$" + total;
+	 $("#totalModal").empty();
+		$("#totalModal").append(total);
+		
 }
 /* function actualizar(element){
 	  var cantidad = element.value;

@@ -29,6 +29,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 </head>
 <body>
 <div id="div1" class="form"> 
+<h2 style="color:black; text-align:center; fonto-size:17px;"> Pedidos por Entregar</h2>
 <form class="formInsert" action="PedidosServlet" method="get" id="formPedidos" >
 
 <%-- <h2>Pedidos para el evento: <% out.println(session.getAttribute("activado").toString()); %></h2>
