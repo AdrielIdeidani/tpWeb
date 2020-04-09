@@ -77,8 +77,11 @@ public class PedidosServlet extends HttpServlet {
 			String mozo = request.getParameter("mozo");
 			String mesa =request.getParameter("mesa");
 			String total= request.getParameter("tot");
+			String entregar= request.getParameter("agregarEntregar");
 
-		
+			if(Integer.parseInt(entregar)==0) {
+				
+			
 				String aux= lp.agregar(user, contra, total,mesa,mozo,evento,ids,cantidades);		
 	
 		
@@ -89,7 +92,19 @@ public class PedidosServlet extends HttpServlet {
 				else
 				response.sendRedirect("AgregarPedidos.jsp?control="+aux);
 			
-		
+			} else if(Integer.parseInt(entregar)==1) {
+				String aux= lp.agregarEntregar(user, contra, total,mesa,mozo,evento,ids,cantidades);		
+				
+				
+				if(aux==null) {
+					response.sendRedirect("AgregarPedidos.jsp");
+
+				}
+				else
+				response.sendRedirect("AgregarPedidos.jsp?control="+aux);
+				
+			}
+			
 		
 	}
 

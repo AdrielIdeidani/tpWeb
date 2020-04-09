@@ -10,13 +10,14 @@
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
- <link href="Css/form.css" type="text/css" rel="stylesheet" />
-  
+<link href="Css/PageInPanel.css" rel="stylesheet" type="text/css"/>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" 
+integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>  
 </head>
 
 <body>
 	<div id="div1" class="form">
-		<h2>Agregar Mozo</h2>
+		<h2 style="color:black; text-align:center; fonto-size:17px;">Agregar Mozo</h2>
 		<form class="formInsert" action="MesasYMozosServlet" method="post" >
 	
 		 
@@ -27,34 +28,30 @@
 		      String nombre = request.getParameter("nombre");
 		    if (nombre!=null){
 			    String apellido = request.getParameter("apellido");
-		    	out.println("<label for='nombre'>  Nombre:  </label>");
-		    	out.println(" <input type='text'  name='nombre' value="+nombre+" >" );
+			    %>
+		    	<label for='nombre'>  Nombre:  </label>
+		    	<input type='text'  name='nombre' value=<%=nombre %> >
 				
-		    	out.println("<label for='apellido'>  Apellido:  </label>");
-		    	out.println("<input type='text'   id='apellido' name='apellido' value="+apellido + " >");	
-		    	out.println("<input type='submit' value='Añadir'>");
-				out.println("<input type='hidden' name='tabla' value='Mozo' >"); 
-				out.println("<input type='hidden' name='auction' value='Modificar' >"); 
+		    	<label for='apellido'>  Apellido:  </label>
+		    	<input type='text'   id='apellido' name='apellido' value=<%=apellido %>>	
+		    	<input type='submit' value='Añadir'>
+				<input type='hidden' name='tabla' value='Mozo' >
+				<input type='hidden' name='auction' value='Modificar' >
 	
 
-		    }
+		  <%   }
 		    else {	//Insert
 		    	
-		    
-		    out.println("<label for='nombre'>  Nombre:  </label>");
-	    	out.println(" <input type='text'  name='nombre' value='' >" );
+		    %>
+		    <label for='nombre'>  Nombre:  </label>
+	    	<input type='text'  name='nombre' value='' >
 			
-	    	out.println("<label for='apellido'>  Apellido:  </label>");
-	    	out.println("<input type='text'   id='apellido' name='apellido' >");	
-	    	out.println("<input type='submit' value='Añadir'>");
-			out.println("<input type='hidden' name='tabla' value='Mozo' >"); 
-			out.println("<input type='hidden' name='auction' value='Insert' >"); 
-		    }
-			out.println("<input type='hidden' name='idEventoActivo' value="+idEventoActivo+" >"); 
-
-
-
-%>
+	    	<label for='apellido'>  Apellido:  </label>
+	    	<input type='text'   id='apellido' name='apellido' >	
+	    	<input type='submit' value='Añadir'class='btnAgregar'>
+			<input type='hidden' name='tabla' value='Mozo' > 
+			<input type='hidden' name='auction' value='Insert' >
+		   <%} %> 
 		    
 		   
 		</form>

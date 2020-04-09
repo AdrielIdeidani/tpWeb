@@ -26,7 +26,7 @@ import logic.logicProducto;
 @WebServlet("/ProductosServlet")
 public class ProductosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Connection C=null;
+	
 	PreparedStatement pstmt =null;
 	ResultSet rs=null;
 	HttpSession miSesion=null;
@@ -39,15 +39,8 @@ public class ProductosServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
     
-    public void destroy() {
-    	
-    try {
-		C.close();
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-    }
+  
+
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

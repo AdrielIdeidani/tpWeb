@@ -2,6 +2,7 @@ package entities;
 
 import java.sql.Time;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class Pedido {
@@ -33,6 +34,7 @@ public class Pedido {
 		return horaEntrega;
 	}
 	public void setHoraEntrega(Time horaEntrega) {
+		
 		this.horaEntrega = horaEntrega;
 	}
 	public void setIdMesa(int idMesa) {

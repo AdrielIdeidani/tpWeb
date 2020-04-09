@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import logic.logicInicio;
+
 /**
  * Servlet implementation class InicioServlet
  */
@@ -19,7 +21,7 @@ import javax.servlet.http.HttpSession;
 public class InicioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	Connection C=null;
-       
+       logicInicio li= new logicInicio();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -42,32 +44,28 @@ public class InicioServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String contra= request.getParameter("contra");
-		System.out.println(contra);
 		String user =request.getParameter("usuario");
-		System.out.println(user);
-		try {
-			 C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					user,contra); //"root","adrielcolo"
-		
-		HttpSession miSesion = request.getSession(true);
-		miSesion.setAttribute("usuario", user);
-		miSesion.setAttribute("contra", contra);
-		miSesion.setAttribute("activado","0");
-		response.sendRedirect("PanelDeControl.jsp");
+		String aux= li.conectar(user, contra);
+	
+		if(aux==null) {
+			HttpSession miSesion = request.getSession(true);
+			miSesion.setAttribute("usuario", user);
+			miSesion.setAttribute("contra", contra);
+			miSesion.setAttribute("activado","0");
+			response.sendRedirect("PanelDeControl.jsp");
 		}
-		catch (SQLException e) {
-			System.out.println("Error de conexion!");
-			e.printStackTrace();
-			response.sendRedirect("Inicio.jsp");
+		else response.sendRedirect("Inicio.jsp?control="+aux);
 		}
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		HttpSession miSesion = request.getSession();
+		miSesion.invalidate();
+		response.sendRedirect("Inicio.jsp");
 	}
 
 }

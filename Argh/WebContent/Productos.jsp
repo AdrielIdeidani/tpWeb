@@ -24,12 +24,12 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 </head>
 <body>
 <div>
-		
-		<a href="ProductosInsert.jsp"><button class="btnAgregar">Añadir</button></a>
+		<h2 style="color:black; text-align:center; fonto-size:17px;"> Productos</h2>
+		<a href="ProductosInsert.jsp"><button class="btnAgregar" style="float:right;">Añadir</button></a>
 		<form action="ProductosServlet" method="get" id="formProductos">			
 			<table id="mytable">
-			<caption class="captionComun">Productos</caption>
-			<thead>
+<!-- 			<caption class="captionComun">Productos</caption>
+ -->			<thead>
 			<tr>
 			
 				<th>Id</th>
@@ -40,7 +40,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 			</thead>
 			<% 
 			ProductosData pd = new ProductosData(); 
-			ArrayList<Producto> list = pd.getAll(session.getAttribute("activado").toString()); //request.getAttribute("activado").toString()
+			ArrayList<Producto> list = pd.getAll(session.getAttribute("usuario").toString(),
+					session.getAttribute("contra").toString(),	session.getAttribute("activado").toString());
 			for(Producto l: list){%>
 				<tr>
 					<td class="colClass"><%= Integer.toString(l.getId())%></td>

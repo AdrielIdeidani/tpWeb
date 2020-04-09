@@ -9,13 +9,9 @@
 <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> 
 </head>
 <body>
-	<div>
-		<h1>Bienvenidxs!</h1>
-		<h2>Trabajo Grupal para la asignatura JAVA!</h2>
-		<h4>Integrantes:<br>
-		-Hernan<br>
-		-Agutina<br>
-		-Adriel</h4><br>
+	<div style="width:101%;">
+		<h1 style="text-align:center;">Aguante Siria Carajo</h1>
+	
 	</div>
 </body>
 </html>

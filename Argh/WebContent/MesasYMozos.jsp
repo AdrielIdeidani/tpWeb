@@ -94,7 +94,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 			for(Mozo l: list2){%>
 				<tr class="commonRow">
 					<td class="colClass2"><%= Integer.toString(l.getId())%> </td>
-					<td><%= l.getNombre()%> <%= l.getApellido()%> </td>
+					<td class="nomap"><%= l.getNombre()%> <%= l.getApellido()%> </td>
 					<td><button type="submit" id="btnEliminarMozo" class="btnClass2" value="<%=Integer.toString(l.getId())%>"  name="eliminar">X</button></td>
 					
 				</tr>
@@ -172,17 +172,42 @@ $(".btnClass").click(function(e) {
   
 
 });
-$(".btnClass2").click(function() { 
+$(".btnClass2").click(function(e) { 
+	
+	e.preventDefault();
+	
     var $row = $(this).closest("tr");    // Find the row
+    var $m= $row.find(".nomap").text();
     var $text = $row.find(".colClass2").text(); // Find the text
-    if(confirm("Eliminar Mozo " + $text + "?")){
-		    $('#aux').val($row.find(".colClass").text());
-		   	$('#aux2').val($row.find(".colClass2").text());
-		    $(this).attr('id')
-		    $('#auction2').val($(this).attr('id'));
-	    	return true;
-	    }
-	    else return false;
+    
+    $('#aux2').val($row.find(".colClass2").text());
+    $(this).attr('id')
+    $('#auction2').val($(this).attr('id'));
+    bootbox.confirm({
+		title: "Eliminar Mozo",
+	    message: "Eliminar a " + $m +"?" ,
+	    buttons: {
+	      
+	        cancel: {
+	            label: 'Cancelar',
+	            className: 'btn-danger '
+	        },
+	        confirm: {
+	            label: 'Eliminar',
+	            className: 'btn-success '
+	        }
+	    },
+	    callback: function (result) {
+	    	
+	    	if(result) {
+	    	
+	  		document.getElementById("formMozos").submit();
+	    	}
+	    	
+	    } 
+	}); 
+    
+    
 
 
 });

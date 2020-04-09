@@ -20,7 +20,7 @@ public class logicEvento {
 	Connection C=null;
 	PreparedStatement pstmt =null;
 	ResultSet rs=null;
-	HttpSession miSesion=null;
+	
 	boolean completo =true;
 	
 	public boolean eliminar(String user, String contra,String id) {

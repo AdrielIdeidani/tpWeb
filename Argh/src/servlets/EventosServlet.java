@@ -43,14 +43,7 @@ public class EventosServlet extends HttpServlet {
     	
 
     }
-    public void destroy() {
-    
-    try {
-		C.close();
-	} catch (SQLException e) {
-		e.printStackTrace();
-	}
-    }
+
     
     
 

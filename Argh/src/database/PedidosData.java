@@ -41,7 +41,7 @@ public class PedidosData {
 						pedido.setIdMozo(rs.getInt("idMozo"));
 						pedido.setTotal(rs.getFloat("total"));
 						pedidoList.add(pedido);
-						System.out.println("");
+						
 					
 				}
 			rs.close();	//Si los saco de aca tira error, pero para mi no deberian aca e ir en el finally

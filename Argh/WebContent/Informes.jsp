@@ -15,13 +15,13 @@
 <div class="container">
 
 <form action="InformesServlet" method="get">
-<button class="btnInforme" type="submit" value="Productos">Resumen Productos</button>
-<button class="btnInforme" type="submit" value="Mozos">Mozos</button>
+<button class="btnAgregar" type="submit" value="Productos">Resumen Productos</button>
+<button class="btnAgregar" type="submit" value="Mozos">Mozos</button>
 
 <br>
 <br>
-<button class="btnInforme" type="submit" value="Pedidos">Pedidos Entregados</button>
-<button class="btnInforme" type="submit" value="Mesas">Mesas</button>
+<button class="btnAgregar" type="submit" value="Pedidos">Pedidos Entregados</button>
+<button class="btnAgregar" type="submit" value="Mesas">Mesas</button>
 
 
 <input type="hidden" name="aux" id="aux">

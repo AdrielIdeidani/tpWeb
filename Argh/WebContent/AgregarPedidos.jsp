@@ -54,8 +54,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
         <div class="modal-footer2">
        
          <label id="totalModal" for="totalModal" style="top:5px; left:5px; position:relative text-align: left " >0</label>
-      	 <button type="button" class="btn btn-primary" data-dismiss="modal">Agregar y Entregar</button>
-      	  <button type="button" class="btn btn-success" data-dismiss="modal">Agregar</button>
+      	 <button type="button" onclick="entregar()" class="btn btn-primary" data-dismiss="modal">Agregar y Entregar</button>
+      	  <button type="button" onclick="agregar()" class="btn btn-success" data-dismiss="modal">Agregar</button>
       	 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
         
@@ -68,7 +68,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 	
 	
 <%-- <h2>Agregar Pedido para el evento: <% out.println(session.getAttribute("activado").toString()); %></h2> --%>
-<form class="formInsert" action="PedidosServlet" id="formPedidos" method="post" >
+<form  action="PedidosServlet" id="formPedidos" method="post" >
 	
 	  <%
 		     	String nombre = request.getParameter("nombre");
@@ -125,7 +125,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 			</thead>
 			<% 
 			ProductosData pd = new ProductosData(); 
-			ArrayList<Producto> list3 = pd.getAll(session.getAttribute("activado").toString()); //request.getAttribute("activado").toString()
+			ArrayList<Producto> list3 = pd.getAll(session.getAttribute("usuario").toString(),
+					session.getAttribute("contra").toString(),session.getAttribute("activado").toString()); //request.getAttribute("activado").toString()
 			for(Producto l: list3){%>
 				<tr class="iterate">
 					<td class="colClass"><%= Integer.toString(l.getId())%></td>
@@ -147,19 +148,79 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <input type="hidden" id="tot" name="tot">
 <input type="hidden" id="idsHidden" name="idsHidden">
 <input type="hidden" id="cantidadesHidden" name="cantidadesHidden">
-<input type="hidden" id="evento" name="evento" value=<% out.println(session.getAttribute("activado").toString()); %>>
-
+<input type="hidden" id="agregarEntregar" name="agregarEntregar">
 </form>
 
 </div>
 
 <script>
+
+$(document).ready(function(){
+	$("#tablaProductos tbody tr .colClass").click(function(){
+		var $row = $(this).closest("tr"); 
+		var cant= $row.find(".cantidad input").val();
+		cant++;
+		$row.find(".cantidad input").val(cant);
+		actualizar();
+		
+		
+	});
+	
+	
+	
+	
+	
+})
+$(document).ready(function(){
+	$("#tablaProductos tbody tr .precio").click(function(){
+		var $row = $(this).closest("tr"); 
+		var cant= $row.find(".cantidad input").val();
+		cant++;
+		$row.find(".cantidad input").val(cant);
+		actualizar();
+		
+		
+	});
+	
+	
+	
+	
+	
+})
+
+$(document).ready(function(){
+	$("#tablaProductos tbody tr .colNombre").click(function(){
+		var $row = $(this).closest("tr"); 
+		var cant= $row.find(".cantidad input").val();
+		cant++;
+		$row.find(".cantidad input").val(cant);
+		actualizar();
+		
+		
+	});
+	
+	
+	
+	
+	
+})
 $("#btnAgregar").click(function(e) {
 	
 		e.preventDefault();
 		arrays();
 })
-
+function agregar(){
+	$("#agregarEntregar").val("0");
+	document.getElementById("formPedidos").submit();
+	
+	
+}
+function entregar(){
+	$("#agregarEntregar").val("1");
+	document.getElementById("formPedidos").submit();
+	
+	
+}
 function arrays(){
 	
 	var mozoCombo= document.getElementById("mozo");

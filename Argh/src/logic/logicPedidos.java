@@ -15,7 +15,7 @@ public class logicPedidos {
 	ResultSet rs=null;
 	HttpSession miSesion=null;
 	String resultado;
-	
+	String idPedNuevo=null;
 	
 	public String entregar(String user, String contra, String id) {
 		resultado=null;
@@ -42,6 +42,7 @@ public class logicPedidos {
 			String mesa, String mozo, String evento, String[] ids, String[] cantidades) {
 		resultado=null;
 		String idPedido=null;
+		idPedNuevo=null;
 	try {
 		
 	
@@ -63,6 +64,7 @@ public class logicPedidos {
 		
 		if(rs.next()) {
 		idPedido=rs.getString(1);
+		idPedNuevo=idPedido;
 		//System.out.println("idPedido = " + idPedido);
 		}
 		
@@ -109,4 +111,17 @@ public class logicPedidos {
 	}
 	return resultado;
 	}
+	
+	
+	public String agregarEntregar(String user, String contra,String total, 
+			String mesa, String mozo, String evento, String[] ids, String[] cantidades) {
+		resultado=null;
+		
+		
+		resultado=agregar(user,contra,total,mesa,mozo,evento,ids,cantidades);
+		resultado=entregar(user, contra, idPedNuevo);
+
+	return resultado;
+	}
+	
 }

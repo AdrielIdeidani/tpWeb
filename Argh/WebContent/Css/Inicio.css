@@ -1,9 +1,6 @@
 body{
-	background: url(Imagenes/Baalbek-12.jpg) no-repeat center center fixed;
-    background-size: cover;
-    -moz-background-size: cover;
-    -webkit-background-size: cover;
-    -o-background-size: cover;
+	background: url(../Imagenes/Baalbek-12.jpg);
+
 }
 
 #contenedor1{
@@ -11,14 +8,14 @@ body{
 	border-radius:20px;
 	background: #dadada;
 	width:430px;
-	height:450px;
+	height:325px;
 	margin:auto;
-	margin-top:100px;
+	margin-top:150px;
 	opacity:0.8;
 }
 #form1{
 	width:100%;
-	padding:50px 25px 25px 25px;
+	padding:5px 25px 25px 25px;
 	box-sizing:border-box;
 }
 #contenedor1 h1{

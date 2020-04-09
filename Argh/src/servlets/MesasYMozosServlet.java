@@ -76,8 +76,12 @@ public class MesasYMozosServlet extends HttpServlet {
 
 				}//Termina if de insert mozo
 				else if (tabla.contains("Mesa")) {
-					aux =lm.agregar(user, contra, request.getParameter("capacidad"),evento);
-					
+					if(request.getParameter("capacidad")=="") {
+						aux="Ingrese algun valor!";
+						
+
+					}
+					else aux =lm.agregar(user, contra, request.getParameter("capacidad"),evento);
 					
 					
 				}//Fin insert mesa

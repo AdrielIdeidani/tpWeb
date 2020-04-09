@@ -44,8 +44,8 @@ public class logicMesas {
 		if (Integer.parseInt(cantidad)<1) {
 			resultado="Agregue una capacidad positiva";
 			
-		}
-		else {
+		} 
+		else if (Integer.parseInt(cantidad)>0) {
 		try {
 			 C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					 user,contra);
@@ -64,6 +64,7 @@ public class logicMesas {
 			e.printStackTrace();
 		}
 		}
+		else resultado="Ingrese algun valor!";
 		return resultado;
 		
 	}

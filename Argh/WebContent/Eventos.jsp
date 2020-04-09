@@ -41,18 +41,18 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <body>
 	<div>
 		
-		
-		<a href="EventosInsert.jsp"><button class="btnAgregar" id="btnInsertar">Añadir</button></a>
+		<h2 style="color:black; text-align:center; fonto-size:17px;"> Eventos</h2>
+		<a href="EventosInsert.jsp"><button class="btnAgregar" id="btnInsertar" style="float:right;">Añadir</button></a>
 		<form action="EventosServlet" id="formEventos" method="get">			
 			<table id="mytable">
-			<caption class="captionComun">Eventos</caption>
-			<thead>
+<!-- 			<caption class="captionComun">Eventos</caption>
+ -->			<thead>
 			<tr>
 			
 				<th>Id</th>
 				<th>Fecha</th>
 				<th>Nombre</th>
-				<th colspan="3"></th>
+				
 			</tr>
 			</thead>
 			<% 
