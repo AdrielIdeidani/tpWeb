@@ -16,13 +16,13 @@ public class MesasData {
 	ResultSet rs=null;
 	PreparedStatement pstmt=null;
 	
-	public ArrayList<Mesas> getAll(String id) throws SQLException {
+	public ArrayList<Mesas> getAll(String user, String contra,String id) throws SQLException {
 	
 		ArrayList<Mesas> mesaslist =null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
+					user,contra);
 //				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
 //						"epiz_24914012","LHo7Qpn2JaoM");
 			//	Connection c = new ConexionMySQL(); //ConexionMySQL
@@ -63,13 +63,13 @@ public class MesasData {
 
 	}
 	
-	public int getVendidos(int idMesa,int idEvento) throws SQLException {
+	public int getVendidos(String user, String contra,int idMesa,int idEvento) throws SQLException {
 
 		int total=0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
+					user,contra);
 //				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
 //						"epiz_24914012","LHo7Qpn2JaoM");
 			//	Connection c = new ConexionMySQL(); //ConexionMySQL

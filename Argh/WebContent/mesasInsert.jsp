@@ -38,8 +38,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 		    	
 		    
 		   <label for="nombre">  Capacidad de la mesa:  </label>
-	    	 <input type="number"  name="capacidad" min="1" >
-	  
+	    	<input type="number"  name="capacidad" min="1" >
+	    	<br>	  
 	    	<input type="submit" value="Añadir" class="btnAgregar">
 			<input type="hidden" name="tabla" value="Mesa" > 
 			<input type='hidden' name='auction' value='Insert'> 

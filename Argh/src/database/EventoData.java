@@ -13,12 +13,15 @@ public class EventoData {
 	PreparedStatement pstmt=null;
 	
 	
-	public Evento getOne(String id, String fecha) throws SQLException{		
-		ConexionMySQL c = new ConexionMySQL();
-		System.out.println("getOne de id y fecha");
+	public Evento getOne(String user,String contra,String id, String fecha) throws SQLException{		
+		
 		Evento event = new Evento();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					user,contra);
 		String query = "SELECT * FROM evento WHERE idEvento = ? and fecha = ?";
-		PreparedStatement pstmt = c.getConnection().prepareStatement(query);
+		PreparedStatement pstmt = C.prepareStatement(query);
 		pstmt.setString(1, id);
 		pstmt.setString(2, fecha);
 		ResultSet rs = pstmt.executeQuery();
@@ -28,15 +31,23 @@ public class EventoData {
 		event.setDesc(rs.getString("descripcion"));
 		rs.close();
 		pstmt.close();
-		c.getConnection().close();
-		System.out.println("Conexion finalziada");
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			C.close();
+		}
+		
 		return event;	
 	}
 	
-	public Evento getOne(String id) throws SQLException{
-		C = new ConexionMySQL();
-		System.out.println("getOne de id");
+	public Evento getOne(String user, String contra,String id) throws SQLException{
 		Evento event = new Evento();
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					user,contra);
+		
 		String query = "SELECT * FROM evento WHERE idEvento = ?";
 		 pstmt = C.prepareStatement(query);
 		pstmt.setString(1, id);
@@ -47,8 +58,13 @@ public class EventoData {
 		event.setDesc(rs.getString("descripcion"));
 		rs.close();
 		pstmt.close();
-		C.close();
-		System.out.println("Conexion finalziada");
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		finally{
+			C.close();
+		}
+		
 		return event;	
 	}
 	

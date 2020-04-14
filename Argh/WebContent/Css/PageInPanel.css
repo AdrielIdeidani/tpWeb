@@ -18,6 +18,248 @@ body{
 	
 	
 }
+
+.form{	
+	display: block;
+	text-align: left;
+	color: white;
+	background-color:rgba(207,37,0,0.8);
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 2%;
+	padding-right: 2px;
+	border-radius: 5px;
+	
+	margin:10px;
+}
+ .formInsert{
+	margin: 2rem auto;
+	border: 2px solid green;
+	padding: 2rem;
+	width:90%;
+	
+	
+ }
+.formInsert input{
+	display:block;
+	margin-bottom: 10px;
+	font-size:15px;
+}
+
+.container{
+	width:100%;
+}
+div{
+	text-align: left;
+	color: white;
+	position: relative;
+    left: -5%;
+	background-color:rgba(207,37,0,0.8);
+	padding-top: 1%;
+	padding-bottom: 1%;
+	padding-left: 2%;
+	padding-right: 2%;
+	border-radius: 5px;
+	width:104%;  /* 90%; */ 
+	margin:3px; /* 10px; */
+}
+
+table{
+	margin-top: 1%;
+	border-color: black;
+	border-collapse: collapse;
+	width:100%;
+}
+th,td{
+	padding-right: 10px;
+}
+
+table th{
+	text-align:left;
+	background-color: #008000;
+	color:white;
+	padding: 4px 30px 4px 8px;
+}
+
+table td{
+	border-bottom: 1px solid #e3e3e3;
+	padding: 4px 8px;
+	font:bold 15px "Trebuchet MS";
+	align: left;
+}
+table button {
+	button:pointer;
+}
+table .selected{
+	background-color:red;
+	color: white;
+}
+.commonRow{
+        background-color: transparent;
+      }
+
+.selectedRow{
+        background-color: blue;
+      }
+.iterate:hover{
+	 background-color: blue;
+	 cursor:pointer;
+	
+}
+.floatLeft { width: 40%; float: left; }
+.floatRight {width: 40%; float: right; }
+.container { overflow: hidden; }
+
+.collapse2{
+	background-color: #add8e6;
+	cursor:pointer;
+	color:black;
+}
+
+
+.btnClass,.btnEliminar,.btnClass2 {
+	box-shadow:inset 0px 1px 0px 0px #a4e271;
+	background:linear-gradient(to bottom, #89c403 5%, #77a809 100%);
+	background-color:#89c403;
+	border-radius:4px;	
+	border:1px solid #74b807;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:4px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528009;
+}
+.btnClass:hover, .btnEliminar:hover, .btnClass2:hover {
+	background:linear-gradient(to bottom, #77a809 5%, #89c403 100%);
+	background-color:#77a809;
+}
+.btnClass:active, .btnEliminar:hover, .btnClass2:active {
+	position:relative;
+	top:1px;
+}	
+
+.btnAgregar {
+	
+	background-color:#e4685d;
+	border-radius:4px;
+	border:5px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:6px 11px;
+	text-decoration:none;
+}
+.btnAgregar:hover {
+	background-color:#d6a5a3;
+}
+.btnAgregar:active {
+	position:relative;
+	top:1px;
+}
+
+
+.modal-body{
+	left:-2%;
+	width: 102%;
+}
+.modal-footer{
+	left:-2%;
+	width: 102%;
+}
+.bootbox-body{
+	left:-2%;
+	background-color: transparent;
+
+}
+.modal-header {
+	width: 102%;
+ left:-2%;
+  display: flex;
+  font-weight: bold;
+}
+
+.modal-close {
+	display:none;
+  margin-left: auto;
+  color: inherit;
+  text-decoration: none;
+  margin-top: -.5rem;
+  font-size: 2rem;
+}
+.modal-header2{
+	width:100%;
+	left:0;
+	
+}
+.modal-content2 {
+	background-color:white;
+ 	 left:10%; 
+  padding:1px;
+    pointer-events: auto;
+    background-clip: padding-box;
+    border: 1px solid #006400;
+  	padding-right: 10px;
+} 
+.modal-footer2{
+	width:100%;
+	align:right;
+	left:0;
+}
+
+.modal-body2 {
+	width:100%;
+	left:0;
+	white-space: pre;
+  background-color: #A9A9A9;
+	position: relative;
+  border: 2px solid cornflowerblue;
+ max-height:300px;
+  padding: 20px 10px 10px;
+  overflow: auto;
+}
+.modal-body2 label{
+	
+		
+	color:black;
+	 line-height: 20px;
+  padding: 0 5px;
+
+
+}
+.modal-dialog2{
+	width: 60%;
+	left:0px;
+	
+
+}	
+
+//body{
+	background: url(../Imagenes/fondo.png);
+	background-repeat: no-repeat;
+	background-position: 10% 15%;
+	background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        padding-left: 5%;	
+}
+.captionComun {
+	caption-side:top ; 
+	color:black ;
+	font-size:22px ;
+	text-align:center ;
+	padding-top: 5px;
+	font-weight:bold;
+	
+	
+}
 .form{	
 	display: block;
 	text-align: left;
@@ -162,34 +404,7 @@ table .selected{
 	top:1px;
 }
 
-/* .modal-overlay {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, .5);
-  opacity: 0;
-  transition: opacity .2s ease;
-}
 
-.modal-overlay.active {
-  display: flex;
-}
-
-.modal-overlay.visible {
-  opacity: 1;
-}
-
-.modal-container {
-  flex-basis: 50%;
-  padding: 1rem;
-  background-color: green;
-  border-radius: 3px;
-}*/
 .modal-body{
 	left:-2%;
 	width: 102%;
@@ -265,6 +480,8 @@ table .selected{
 
 }	
 
-}
+
+
+
 
 

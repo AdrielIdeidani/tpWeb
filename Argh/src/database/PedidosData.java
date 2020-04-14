@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import entities.Pedido;
@@ -23,10 +24,7 @@ public class PedidosData {
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					user,contra);
 
-//				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
-//						"epiz_24914012","LHo7Qpn2JaoM");
-			//	Connection c = new ConexionMySQL(); //ConexionMySQL
-				//System.out.println("getAll");
+
 				pedidoList = new ArrayList<Pedido>();
 				String query = "SELECT * FROM tparg.pedido where pedidoIdEvento = ? and isnull(horaEntrega) ; ";
 				PreparedStatement pstmt = C.prepareStatement(query);
@@ -66,17 +64,14 @@ public class PedidosData {
 
 	}
 	
-	public ArrayList<Pedido> getEntregados(String id) throws SQLException {
-		
+	public ArrayList<Pedido> getEntregados(String user, String contra,String id) throws SQLException {
+
 		ArrayList<Pedido> pedidoList =null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
-//				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
-//						"epiz_24914012","LHo7Qpn2JaoM");
-			//	Connection c = new ConexionMySQL(); //ConexionMySQL
-				//System.out.println("getAll");
+					user,contra );
+
 				pedidoList = new ArrayList<Pedido>();
 				String query = "SELECT * FROM tparg.pedido where pedidoIdEvento = ? and horaEntrega is not null ; ";
 				PreparedStatement pstmt = C.prepareStatement(query);
@@ -86,9 +81,13 @@ public class PedidosData {
 				while(rs.next()) {
 						Pedido pedido = new Pedido();
 						pedido.setNroPedido(rs.getInt("nroPedido"));
+						System.out.println(pedido.getNroPedido());
 						pedido.setIdMesa(rs.getInt("nroMesa"));
+						System.out.println(pedido.getIdMesa());
 						pedido.setIdMozo(rs.getInt("idMozo"));
+						System.out.println(pedido.getIdMozo());
 						pedido.setTotal(rs.getFloat("total"));
+						System.out.println(pedido.getTotal());
 						pedido.setHoraEntrega(rs.getTime("horaEntrega"));
 						System.out.println(pedido.getHoraEntrega());
 						pedidoList.add(pedido);

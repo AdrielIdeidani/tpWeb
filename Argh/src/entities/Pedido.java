@@ -1,41 +1,39 @@
 package entities;
 
 import java.sql.Time;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
+
+import com.mysql.cj.result.LocalTimeValueFactory;
+
 
 public class Pedido {
 	private int nroPedido, idMesa, idMozo;
 	//private String estado;
-	private Time horaEntrega;
+	private LocalTime horaEntrega;
 	
 	private ArrayList<LineaPedido> lineasPedido;
 	private float total;
 	
-	//Getters & Setters
+
 	public int getNroPedido() {
 		return nroPedido;
 	}
 	public void setNroPedido(int nroPedido) {
 		this.nroPedido = nroPedido;
 	}
-//	public String getEstado() {
-//		return estado;
-//	}
-//	public void setEstado(String estado) {
-//		this.estado = estado;
-//	}
 	
 	public int getIdMesa() {
 		return idMesa;
 	}
-	public Time getHoraEntrega() {
+	public LocalTime getHoraEntrega() {
 		return horaEntrega;
 	}
 	public void setHoraEntrega(Time horaEntrega) {
 		
-		this.horaEntrega = horaEntrega;
+		LocalTime aux= horaEntrega.toLocalTime();
+		aux=aux.plusHours(3);		
+		this.horaEntrega = aux;
 	}
 	public void setIdMesa(int idMesa) {
 		this.idMesa = idMesa;

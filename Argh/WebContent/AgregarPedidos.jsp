@@ -83,7 +83,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 		    	<option value='0'>Mesa</option>
 		    	<% 			
 				MesasData md = new MesasData(); 
-				ArrayList<Mesas> list = md.getAll(session.getAttribute("activado").toString());
+				ArrayList<Mesas> list = md.getAll(session.getAttribute("usuario").toString(),
+						session.getAttribute("contra").toString(),session.getAttribute("activado").toString());
 				for(Mesas l: list){%>
 		    	<option value=<%= l.getNroMesa()%> ><%= l.getNroMesa()%></option>
 		    	
@@ -104,7 +105,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 		    	<option value='0'>Mozo</option>
 		    	<% 			
 				MozosData mod = new MozosData(); 
-				ArrayList<Mozo> list2 = mod.getAll(session.getAttribute("activado").toString());
+				ArrayList<Mozo> list2 = mod.getAll(session.getAttribute("usuario").toString(),
+						session.getAttribute("contra").toString(),session.getAttribute("activado").toString());
 				for(Mozo l: list2){%>
 				
 				<option value=<%= l.getId()%>> <%= l.getNombre() %> <%= l.getApellido()%> </option>
@@ -156,28 +158,53 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <script>
 
 $(document).ready(function(){
-	$("#tablaProductos tbody tr .colClass").click(function(){
+	$("#tablaProductos tbody tr .colClass, #tablaProductos tbody tr .precio,#tablaProductos tbody tr .colNombre").click(function(){
 		var $row = $(this).closest("tr"); 
 		var cant= $row.find(".cantidad input").val();
-		cant++;
-		$row.find(".cantidad input").val(cant);
-		actualizar();
+		var maxim=$row.find(".cantidad input").attr("max");
+		if(cant>=maxim){
+			bootbox.confirm({
+				
+			    message: "Estaria agregando un producto que no tendria que haber segun stock. Continuar?",
+			   
+			    
+			    buttons: {
+			      
+			        cancel: {
+			            label: 'Cancelar',
+			            className: 'btn-danger '
+			        },
+			        confirm: {
+			            label: 'Agregar',
+			            className: 'btn-success '
+			        }
+			      
+			    },
+			    callback: function (result) {
+			    	
+			    	if(result) {
+			    		cant++;
+						$row.find(".cantidad input").val(cant);
+				 		actualizar();
+			  		
+			  	    
+
+			    	}
+			    	
+			    } 
+			});
+				
+				
+			
+			
+			
+		}
+		else{
+			cant++;
+			$row.find(".cantidad input").val(cant);
+	 		actualizar();
+		}
 		
-		
-	});
-	
-	
-	
-	
-	
-})
-$(document).ready(function(){
-	$("#tablaProductos tbody tr .precio").click(function(){
-		var $row = $(this).closest("tr"); 
-		var cant= $row.find(".cantidad input").val();
-		cant++;
-		$row.find(".cantidad input").val(cant);
-		actualizar();
 		
 		
 	});
@@ -188,27 +215,13 @@ $(document).ready(function(){
 	
 })
 
-$(document).ready(function(){
-	$("#tablaProductos tbody tr .colNombre").click(function(){
-		var $row = $(this).closest("tr"); 
-		var cant= $row.find(".cantidad input").val();
-		cant++;
-		$row.find(".cantidad input").val(cant);
-		actualizar();
-		
-		
-	});
-	
-	
-	
-	
-	
-})
 $("#btnAgregar").click(function(e) {
 	
 		e.preventDefault();
 		arrays();
 })
+
+
 function agregar(){
 	$("#agregarEntregar").val("0");
 	document.getElementById("formPedidos").submit();
@@ -315,6 +328,7 @@ else bootbox.alert("Agregue algun Producto!");
 
 
 function actualizar(){
+	
 	var total=0;
 	$("tr.iterate").each(function() {
 		

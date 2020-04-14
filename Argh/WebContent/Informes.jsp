@@ -14,7 +14,7 @@
 <body>
 <div class="container">
 
-<form action="InformesServlet" method="get">
+<form action="InformesServlet" method="get" class="formInformes">
 <button class="btnAgregar" type="submit" value="Productos">Resumen Productos</button>
 <button class="btnAgregar" type="submit" value="Mozos">Mozos</button>
 
@@ -32,7 +32,7 @@
 </form>
 </div>
 <script type="text/javascript">
-$(".btnInforme").click(function() { 
+$(".btnAgregar").click(function() { 
 	
  $('#aux').val($(this).val());
 

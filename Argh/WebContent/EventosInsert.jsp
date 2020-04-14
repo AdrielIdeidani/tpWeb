@@ -29,25 +29,22 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 		    if (nombre!=null){
 			      String fecha = request.getParameter("fecha");
 %>
-
+				<label for='nombre'>  Nombre del evento:  </label>
+		    	<input type='text'   id='nombreEvento' name='nombreEvento' value=<%=nombre %>>
+		    	<br>
 		    	<label for='fecha'>  Fecha:  </label>
 		    	<input type='date'  name='fecha' value=<%=fecha %> >
-		    	<label for='nombre'>  Nombre del evento:  </label>
-		    	<input type='text'   id='nombreEvento' name='nombreEvento' value=<%=nombre %>>
+		    	<br>
 			    <input type='submit' value='Modificar'  class="btnAgregar">
-				
 				<input type='hidden' name='auction' value='Modificar' >
 				<input type='hidden' name='id' value=<%= request.getParameter("id")%>>
 
 		  <% }  else {%>  
 		   
-		    	
-		    
-		   <label for='fecha'>  Fecha:  </label>
-	    	<input type='date'  name='fecha' value='' >
-			
-	    	<label for='nombre'>  Nombre del evento:  </label>
-	    	<input type='text'   id='nombreEvento' name='nombreEvento' >
+		    <input type='text'   id='nombreEvento' name='nombreEvento' placeholder="Nombre del Evento" >
+		    <br>
+		    <input type='date'  name='fecha' value='' >
+	    	<br>
 	    	<input type='submit' value='Añadir' class="btnAgregar">
 			<input type='hidden' name='auction' value='Insert' >
 		   <%} %> 

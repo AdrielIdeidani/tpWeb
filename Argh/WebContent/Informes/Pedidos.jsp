@@ -7,6 +7,7 @@
 <%@ page import="entities.Pedido" %>
 <%@ page import="database.MozosData" %>
 <%@ page import="entities.Mozo" %> 
+<%@ page import="java.time.LocalTime" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,14 +16,16 @@
 <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-  
-<link href="Informes.css" type="text/css" rel="stylesheet" />
+  crossorigin="anonymous"></script> 
+<link href="../Css/PageInPanel.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>
 <div id="div1" class="form">
-<h1>Pedidos Entregados:</h1>
 <table id="tablaPorEntregar">
+<caption class="captionComun">Pedidos Entregados</caption>
 	<thead>
 	<tr>
 	
@@ -31,19 +34,22 @@
 	<th>Mozo</th>
 	<th>Total</th>
 	<th>Hora</th>
+	
 	</tr>
 	</thead>
 	<% 
 			PedidosData ped = new PedidosData(); 
-			ArrayList<Pedido> listPed = ped.getEntregados(session.getAttribute("activado").toString()); //request.getAttribute("activado").toString()
+			ArrayList<Pedido> listPed = ped.getEntregados(session.getAttribute("usuario").toString(),
+					session.getAttribute("contra").toString(),session.getAttribute("activado").toString()); //request.getAttribute("activado").toString()
 
 			
 			for(Pedido l: listPed){%>
-			<tr class="collapse">
-				<td class="colClass"><%= Integer.toString(l.getNroPedido())%></td>
+			<tr class="collapse2">
+				<td class="colClass"> <%= Integer.toString(l.getNroPedido())%> </td>
 				<td>Mesa: <%=l.getIdMesa()%></td>
 				<% MozosData md= new MozosData();
-				Mozo mozo= md.getOne(l.getIdMozo());
+				Mozo mozo= md.getOne(session.getAttribute("usuario").toString(),
+						session.getAttribute("contra").toString(),l.getIdMozo());
 				
 				%>
 				
@@ -52,6 +58,7 @@
 				<td><%=l.getHoraEntrega() %></td>
 <%-- 				<td><button type="submit" id="btnEntregar" class="btnEntregar" name="btnEntregar"  value="<%= Integer.toString(l.getNroPedido())%>">Entregar</button>
  --%>				
+ 				
  	</tr>		
 			
 			<%
@@ -68,24 +75,17 @@
 				<td>Precio <%= l2.getProd().getPrecio() %> </td>
 			</tr>
 	
-			<%}%>
+			<%}%> 
 		<%}%>
 		</table>
 </div>
 
 <script>
 $(document).ready(function(){
-	$('.collapse').click(function() { 
-			$(this).nextUntil('tr.collapse').slideToggle(10);
+	$('.collapse2').click(function() { 
+			$(this).nextUntil('tr.collapse2').slideToggle(10);
 					}	)
 
-					$('input:checkbox').change(function () {
-						//var $row= $(this).closest('tr .collapse');
-						var $row= $(this).find('tr .collapse');
-						//alert($row.find('.colClass').text());
-		
-						
-					 });
 	
 	
 	

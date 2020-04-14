@@ -17,14 +17,14 @@ public class MozosData {
 	ResultSet rs=null;
 	PreparedStatement pstmt=null;
 	
-	public ArrayList<Mozo> getAll(String id) throws SQLException {
+	public ArrayList<Mozo> getAll(String user, String contra,String id) throws SQLException {
 	
 		System.out.println("Llega al Mesa Data! " + id);
 		ArrayList<Mozo> mozoslist =null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
+					user,contra);
 //				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
 //						"epiz_24914012","LHo7Qpn2JaoM");
 			//	Connection c = new ConexionMySQL(); //ConexionMySQL
@@ -65,13 +65,13 @@ public class MozosData {
 
 	}
 
-	public Mozo getOne(int id) throws SQLException {
+	public Mozo getOne(String user, String contra,int id) throws SQLException {
 		System.out.println("id mozos data " + id);
 		Mozo mozo = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
+					user,contra);
 //				Connection C = DriverManager.getConnection("jdbc:mysql://sql213.epizy.com/epiz_24914012_tparg",
 //						"epiz_24914012","LHo7Qpn2JaoM");
 			//	Connection c = new ConexionMySQL(); //ConexionMySQL
@@ -112,13 +112,13 @@ public class MozosData {
 		
 		return mozo;
 	}
-	public int getVendidos(int idMozo,int idEvento) throws SQLException {
+	public int getVendidos(String user, String contra,int idMozo,int idEvento) throws SQLException {
 
 		int total=0;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
-					"root","adrielcolo");
+					user,contra);
 
 				String query = "select sum(total) as Total from tparg.pedido where horaEntrega is not null and pedidoIdEvento=? and idMozo=?;";
 						

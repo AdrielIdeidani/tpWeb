@@ -24,10 +24,13 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 
 		    	<label for='nombre'>  Nombre:  </label>
 		    	<input type='text'  name='nombre' value=<%=nombre %>>
+		    	
 		    	<label for='precio'>  Precio:  </label>
 		    	<input type='number'   id='precio' name='precio'  value=<%= precio%>>
+		    	
 		    	<label for='stock'>  Stock:  </label>
 		    	<input type='number' id='stock' name='stock'  value=<%=stockIni %>>
+		    	
 			    <input type='submit' value='Modificar' class="btnAgregar">
 				<input type='hidden' name='auction' value='Modificar' >
 				<input type='hidden' name='id' value=<%=request.getParameter("id") %>> 
@@ -36,12 +39,12 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 	
 		  else { %>
 		    	
-			<label for='nombre'>  Nombre:  </label>
-		   <input type='text'  name='nombre' value=''>
-		    <label for='precio'>  Precio:  </label>
-		    <input type='number'   id='precio' name='precio' value=''>
-		    <label for='stock'>  Stock:  </label>
-		    <input type='number' id='stock' name='stock'  value='' width='10'>
+		   <input type='text'  name='nombre' value='' placeholder="Nombre">
+		   <br>
+		    <input type='number'   id='precio' name='precio' value='' placeholder="Precio">
+		    <br>
+		    <input type='number' id='stock' name='stock'  value='' width='10' placeholder="Stock(min0)">
+		    <br>
 			<input type='submit' value='Agregar' class="btnAgregar">
 			<input type='hidden' name='auction' value='Insert' >
 		    

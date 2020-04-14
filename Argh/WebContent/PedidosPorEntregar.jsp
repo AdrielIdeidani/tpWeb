@@ -35,8 +35,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <%-- <h2>Pedidos para el evento: <% out.println(session.getAttribute("activado").toString()); %></h2>
  --%>
 <table id="tablaPorEntregar">
-<!-- <caption style="font-size:25px;text-decoration: underline; margin: 0 0 6px">Pedidos</caption>
- -->			
+		
 			<thead style="width=70%">
 			<tr>
 				<th>Nro</th>
@@ -57,13 +56,14 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 		
 				<tr class="collapse2" > <!-- class="collapse" -->
 					<td class="colClass"><%= Integer.toString(l.getNroPedido())%></td>
-					<td>Mesa: <%=l.getIdMesa()%></td>
+					<td class="mesa">Mesa: <%=l.getIdMesa()%></td>
 					<% MozosData md= new MozosData();
-					Mozo mozo= md.getOne(l.getIdMozo());
+					Mozo mozo= md.getOne(session.getAttribute("usuario").toString(),
+							session.getAttribute("contra").toString(),l.getIdMozo());
 					
 					%>
 					
-					<td><%= mozo.getApellido()  + ", " + mozo.getNombre()  %> </td> <!--  Aca tendria que traer el nombre y el apellido del mozo -->
+					<td class="mozo"><%= mozo.getApellido()  + ", " + mozo.getNombre()  %> </td> <!--  Aca tendria que traer el nombre y el apellido del mozo -->
 					<td >$<%= l.getTotal()%></td>
 					<td><button type="submit" id="btnEntregar" class="btnEntregar" name="btnEntregar"  value="<%= Integer.toString(l.getNroPedido())%>">Entregar</button>
  					</tr>		
@@ -75,8 +75,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 				
 				for(LineaPedido l2: listLinea){%>
 				<tr class="comun">
-					<td><input type="checkbox" name="entregado" id="entregado" class="entregado" > Entregado</td>
-					<td colspan="2"> <%= l2.getCant() %> <%=l2.getProd().getNombre() %> </td>
+					<td><input style="text-decoration: line-through;" type="checkbox" name="entregado" id="entregado" class="entregado" > Entregado</td>
+					<td class="ppe" colspan="2" > <%= l2.getCant() %> <%=l2.getProd().getNombre() %> </td>
 					<td></td>
 					<td></td>
 		
@@ -95,11 +95,13 @@ $(".btnEntregar").click(function(e) {
 	 e.preventDefault();
    var $row = $(this).closest("tr");    // Find the row
    var $text = $row.find(".colClass").text(); // Find the text
-   
+   var $mozo=$row.find(".mozo").text();
+   var $mesa=$row.find(".mesa").text();
+
    
    bootbox.confirm({
-			title: "Entregar Pedido",
-		    message: "Entregar Pedido " + $text +"?" ,
+			title: "Entregar Pedido " + $text +"?",
+		    message: $mesa +" Mozo: " + $mozo ,
 		    buttons: {
 		      
 		        cancel: {
@@ -149,7 +151,7 @@ $(document).ready(function(){
 
 	
 	$('.collapse2').click(function() { 
-			$(this).nextUntil('tr.collapse').slideToggle(10);
+			$(this).nextUntil('tr.collapse2').slideToggle(10);
 					}	)
 
 					$('input:checkbox').change(function () {
@@ -159,6 +161,24 @@ $(document).ready(function(){
 		
 						
 					 });
+	
+	
+	$(".entregado").click(function() {
+		
+	    var $row = $(this).closest("tr");    // Find the row
+	  
+	    
+	    if ($row.find(".entregado").is(":checked"))
+	    {
+	        $row.find(".ppe").css('text-decoration', 'line-through');
+		    $row.find(".ppe").css('color','green');
+	    }
+	    else{
+	    	$row.find(".ppe").css('text-decoration', 'none');
+		    $row.find(".ppe").css('color','white');
+	    }
+	
+	})
  }) 
 	
 

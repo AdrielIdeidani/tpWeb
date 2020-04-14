@@ -43,11 +43,10 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 		    else {	//Insert
 		    	
 		    %>
-		    <label for='nombre'>  Nombre:  </label>
-	    	<input type='text'  name='nombre' value='' >
-			
-	    	<label for='apellido'>  Apellido:  </label>
-	    	<input type='text'   id='apellido' name='apellido' >	
+	    	<input type='text'  name='nombre' value='' placeholder="Nombre">
+	    	<br>
+	    	<input type='text'   id='apellido' name='apellido' placeholder="Apellido">	
+	    	<br>
 	    	<input type='submit' value='Añadir'class='btnAgregar'>
 			<input type='hidden' name='tabla' value='Mozo' > 
 			<input type='hidden' name='auction' value='Insert' >

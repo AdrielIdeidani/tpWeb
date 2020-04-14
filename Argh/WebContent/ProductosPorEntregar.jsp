@@ -35,8 +35,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 <div id="div1" class="form"> 
 <h2 style="color:black; text-align:center; fonto-size:17px;"> Productos que faltan entregar</h2>
 <table >
-<!-- <caption style="font-size:25px;text-decoration: underline; margin: 0 0 6px">Pedidos</caption>
- -->			
+		
 			<thead style="width=70%">
 			<tr>
 				<th colspan="2">Producto</th>
@@ -53,7 +52,7 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 					for(ProdPorEntregar l: listP){
 			%>
 			
-					<tr  > <!-- class="collapse" -->
+					<tr  > 
 					
 					<td colspan="2" ><%= l.getNombre()%></td>
 					

@@ -16,7 +16,6 @@
 	<link rel="icon" type="image/png" href="Imagenes/icono.jpg" />
 	<link href="Css/PanelDeControl.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<!-- <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"> -->
 		
 </head>
 <body>
@@ -25,20 +24,7 @@
 
 	
 		<div id="padre">
-	<!-- 		<div id="Header">
-				<div Style="float: left; 
-							position: absolute">
-				<h1 id="PanelTitulo">
-					PANEL DE CONTROL ARGH</h1>
-				</div>
-				<div id="PanelUsuario" style= "float: right">
-				Usuario: "Unknown"
-				<select >
-					<option Onclick="redirigir(perfil)">Perfíl</option>
-					<option OnClick="CerrarSesion()">Cerrar Sesión</option>			
-				</select>
-				</div>
-			</div> -->
+
 			
 			<div id="ContenedorPrincipal">
 				<div id="contenedorBotones">
@@ -52,51 +38,32 @@
 					  <a href="MesasYMozos.jsp" target="iframeprincipal" >	
 						<button class="BTNPANEL" >Mesas Y Mozos</button>
 					</a>
-	<!-- 			<div class="w3-dropdown-hover">
-  					<button class="BTNPANEL">Pedidos</button>
- 					 <div class="w3-dropdown-content w3-bar-block w3-border">
-   					 <a href="#" class="w3-bar-item w3-button">Link 1</a>
-   					 <a href="#" class="w3-bar-item w3-button">Link 2</a>
-   					 <a href="#" class="w3-bar-item w3-button">Link 3</a>
- 					 </div>
-				</div>
-				 -->
+
 <div class="dropdown">
   <button class="dropbtn">Pedidos</button>
   <div class="dropdown-content">
    <a href="AgregarPedidos.jsp"  target="iframeprincipal">Agregar</a>
    <a href="PedidosPorEntregar.jsp"  target="iframeprincipal">Por Entregar</a>
-    <a href="ProductosPorEntregar.jsp" target="iframeprincipal">Productos Faltan Entregar</a>
+    <a href="ProductosPorEntregar.jsp" target="iframeprincipal">Productos Por Entregar</a>
   </div>
 </div>
 
-				<!-- 	<a target="iframeprincipal"> href="Pedidos.jsp" 
-						<button class="BTNPANEL" id="btnPedidos" onclick="mostrarPedidos()">Pedidos +</button>
-					</a>
-					
-					<div id="opcionesPedidos" style="display:none">
-					
-					<a href="AgregarPedidos.jsp"  target="iframeprincipal">
-						<button class="pedidos" >Agregar Pedido</button>
-					</a>
-					<a href="PedidosPorEntregar.jsp"  target="iframeprincipal">
-						<button class="pedidos" >Ver Pedidos por Entregar</button>
-					</a>
-					
-					</div> -->
-					<a href="Informes.jsp"  target="iframeprincipal">
-						<button class="BTNPANEL" >Reportes</button>
-					</a>
+<div class="dropdown">
+  <button class="dropbtn">Informes</button>
+  <div class="dropdown-content">
+   <a href="Informes/Productos.jsp"  target="iframeprincipal">Productos</a>
+   <a href="Informes/Pedidos.jsp"  target="iframeprincipal">Pedidos</a>
+    <a href="Informes/Mesas.jsp" target="iframeprincipal">Mesas</a>
+    <a href="Informes/Mozos.jsp" target="iframeprincipal">Mozos</a>
+    
+  </div>
+</div>
+
 					<form id="form1" method="post" action="InicioServlet">
 					<button class="BTNPANEL">Cerrar Sesion</button>
 					</form>
 					
-					<!-- <a href="Reservas.jsp" target="iframeprincipal">
-						<button class="BTNPANEL" >Reservas</button>
-					</a>
-					<a href="Usuarios.jsp" target="iframeprincipal">
-						<button class="BTNPANEL" >Usuarios</button>
-					</a> -->
+
 				</div>
 				<div id="Pantalla">
 					<iframe name="iframeprincipal" id="iframeprincipal" src="Welcome.jsp">
@@ -112,22 +79,7 @@
 	</div>		
 	<script>
 	
-$( document ).ready(function() {
-	
-	//$(".BTNPANEL").attr("disabled", true);
-	//$(".BTNPANEL").attr("disabled", false).css('opacity',0.5);
 
-/* 	if ( ${sessionScope.activado }!== null){
-		$(".BTNPANEL").attr("disabled", false).css('opacity',1);
-
-		
-	}
-	else {
-		$(".BTNPANEL").attr("disabled", true);
-	
-	$(".BTNPANEL").attr("disabled", false).css('opacity',0.5);
-	} */
-});
 
 	</script>
 </body>

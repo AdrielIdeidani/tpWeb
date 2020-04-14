@@ -20,7 +20,6 @@ import logic.logicInicio;
 @WebServlet("/InicioServlet")
 public class InicioServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	Connection C=null;
        logicInicio li= new logicInicio();
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,14 +28,6 @@ public class InicioServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    public void destroy() {
-    	
-        try {
-    		C.close();
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    	}
-        }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +37,10 @@ public class InicioServlet extends HttpServlet {
 		String contra= request.getParameter("contra");
 		String user =request.getParameter("usuario");
 		String aux= li.conectar(user, contra);
-	
+	System.out.println("Inicio Servlet");
+	System.out.println("Inicio Servlet");
+	System.out.println("Inicio Servlet");
+
 		if(aux==null) {
 			HttpSession miSesion = request.getSession(true);
 			miSesion.setAttribute("usuario", user);

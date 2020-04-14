@@ -48,8 +48,7 @@ $(document).ready(function(){
 	const page_type = urlParams.get('control');
 	
 	if(page_type!==null){
-		
-		
+
 	
 		bootbox.alert({
 		    size: "medium",

@@ -46,7 +46,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 			</thead>
 <% 			
 			MesasData md = new MesasData(); 
-			ArrayList<Mesas> list = md.getAll(session.getAttribute("activado").toString());
+			ArrayList<Mesas> list = md.getAll(session.getAttribute("usuario").toString(),
+					session.getAttribute("contra").toString(),session.getAttribute("activado").toString());
 			for(Mesas l: list){%>
 				<tr class="commonRow">
 					<td class="colClass"><%= Integer.toString(l.getNroMesa())%> </td>
@@ -90,7 +91,8 @@ integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifw
 			</thead>
 <% 			
 			MozosData mod = new MozosData(); 
-			ArrayList<Mozo> list2 = mod.getAll(session.getAttribute("activado").toString());
+			ArrayList<Mozo> list2 = mod.getAll(session.getAttribute("usuario").toString(),
+					session.getAttribute("contra").toString(),session.getAttribute("activado").toString());
 			for(Mozo l: list2){%>
 				<tr class="commonRow">
 					<td class="colClass2"><%= Integer.toString(l.getId())%> </td>

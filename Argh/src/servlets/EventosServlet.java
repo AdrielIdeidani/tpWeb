@@ -24,7 +24,6 @@ import javax.swing.JOptionPane;
 
 import com.mysql.jdbc.Statement;
 
-import database.ConexionMySQL;
 import database.EventoData;
 import entities.Evento;
 import logic.logicEvento;

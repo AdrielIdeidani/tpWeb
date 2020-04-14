@@ -26,21 +26,15 @@ public class LineasPedidoData {
 			C = DriverManager.getConnection("jdbc:mysql://localhost:3306/tparg?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
 					user,contra);
 			
-			System.out.println("Conecta LPD id: " + id);
-			System.out.println("Conecta LPD");
-			System.out.println("Conecta LPD");
-			System.out.println("Conecta LPD");
+		
 
 
 				lineaList = new ArrayList<LineaPedido>();
 				String query = "SELECT * FROM tparg.pedido_producto where nroPedido = ? ; ";
-				System.out.println("llega antes de crear el pstmt");
 				PreparedStatement pstmt = C.prepareStatement(query);
 				pstmt.setString(1,id );
-				 rs = pstmt.executeQuery(); //Da error si pongo executeQuery(query). En otros datas se usa asi 
-				 System.out.println("ejecuta el pstmt");
+				 rs = pstmt.executeQuery(); 
 				while(rs.next()) {
-					System.out.println("entra al while");
 						LineaPedido lp = new LineaPedido();
 						String query2 = "SELECT * FROM tparg.productos where idProductos = ? ; ";
 						PreparedStatement pstmt2 = C.prepareStatement(query2);
